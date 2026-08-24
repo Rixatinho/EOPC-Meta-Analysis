@@ -1,0 +1,5 @@
+.DS_Store
+*.Rhistory
+output/
+Rplots.pdf
+*.bak*
