@@ -6,7 +6,7 @@ This repository contains the complete analytic code and data for the systematic 
 
 **Title**: The Early-Onset Pancreatic Cancer Paradox: A Systematic Review and Meta-Analysis
 
-**Manuscript**: JNCI-26-0532 (Journal of the National Cancer Institute)
+**Manuscript**: JNCI-26-0532 (Journal of the National Cancer Institute) - accepted 2026-09-20
 
 **PROSPERO**: CRD420261346604
 
@@ -97,7 +97,7 @@ comment refers to a previous supplementary number, map it as follows:
 
 ## Citation
 
-*Manuscript under review at the Journal of the National Cancer Institute.*
+Accepted for publication in the Journal of the National Cancer Institute (JNCI: Journal of the National Cancer Institute), MS# JNCI-26-0532R1, 2026. A DOI and full citation will be added here once the article is published online.
 
 ## License
 
