@@ -239,7 +239,7 @@ create_grade_table <- function() {
     # -1 Serious: CI crosses null AND (small sample OR narrow-effect uncertainty)
     # But NOT if sample is very large (OIS clearly met) and CI is reasonably narrow
     if (crosses_null) {
-      # If large total sample and CI ratio is modest, OIS is met — no downgrade
+      # If large total sample and CI ratio is modest, OIS is met, so no downgrade
       if (large_sample && ci_ratio < 1.6 && m$k >= 10) {
         return(list(rating = "No downgrade",
                     note = sprintf("CI ratio=%.1f, k=%d, N=%s; OIS met",
@@ -368,7 +368,7 @@ create_grade_table <- function() {
   # GRADE guidance (Schunemann 2019 BMJ): "Low" starting point for
   # observational studies already captures inherent design limitations.
   # Additional downgrade should only apply for concerns BEYOND what
-  # the observational design implies — i.e., NOS Poor or ROBINS-E Critical.
+  # the observational design implies, i.e., NOS Poor or ROBINS-E Critical.
   # ROBINS-E "Serious" is the expected default for observational studies
   # (unmeasured confounding), already reflected in the "Low" baseline.
   assess_rob <- function(m, outcome_name) {
@@ -399,7 +399,7 @@ create_grade_table <- function() {
     }
     # No downgrade: all studies NOS Fair/Good + ROBINS-E Moderate/Serious
     # "Serious" on ROBINS-E (unmeasured confounding) is the expected
-    # baseline for observational studies → already in "Low" starting point
+    # baseline for observational studies -> already in "Low" starting point
     return(list(rating = "No downgrade", note = detail))
   }
 

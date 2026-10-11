@@ -65,7 +65,7 @@ run_hr_meta <- function(dat, outcome_label, filename_prefix, fp_opts = list(),
     cat("Prediction interval: not reported (k < 5, unreliable)\n")
   }
 
-  # Forest plot — Lancet table-based layout (forestploter)
+  # Forest plot: Lancet table-based layout (forestploter)
   forest_file <- file.path(PATHS$forest, paste0(filename_prefix, "_forest"))
 
   fp <- tryCatch(
@@ -136,7 +136,7 @@ run_binary_meta <- function(dat, outcome_label, filename_prefix, or_direction_la
   cat("\n--- Summary ---\n")
   print(summary(m))
 
-  # Forest plot — Lancet table-based layout (forestploter)
+  # Forest plot: Lancet table-based layout (forestploter)
   forest_file <- file.path(PATHS$forest, paste0(filename_prefix, "_forest"))
 
   fp <- tryCatch(
@@ -154,13 +154,13 @@ run_binary_meta <- function(dat, outcome_label, filename_prefix, or_direction_la
   return(m)
 }
 
-# Run binary meta-analyses — Demographics
+# Run binary meta-analyses: Demographics
 meta_male        <- run_binary_meta(dat_male,        "Male Proportion",         "Male",        "OR>1: more males in EOPC")
 meta_smoking     <- run_binary_meta(dat_smoking,     "Smoking History",         "Smoking",     "OR>1: more smoking in EOPC")
 meta_diabetes    <- run_binary_meta(dat_diabetes,    "Diabetes History",        "Diabetes",    "OR>1: more diabetes in EOPC")
 meta_family_hx   <- run_binary_meta(dat_family_hx,   "Family History",          "FamilyHx",    "OR>1: more family hx in EOPC")
 
-# Run binary meta-analyses — Tumour characteristics
+# Run binary meta-analyses: Tumour characteristics
 meta_stage_iv    <- run_binary_meta(dat_stage_iv,    "Stage IV Proportion",     "StageIV",     "OR>1: more Stage IV in EOPC")
 meta_stage_i     <- run_binary_meta(dat_stage_i,     "Stage I Proportion",      "StageI",      "OR>1: more Stage I in EOPC")
 meta_stage_ii    <- run_binary_meta(dat_stage_ii,    "Stage II Proportion",     "StageII",     "OR>1: more Stage II in EOPC")
@@ -175,7 +175,7 @@ meta_tumor_body  <- run_binary_meta(dat_tumor_body,  "Tumour Body Location",    
 meta_tumor_tail  <- run_binary_meta(dat_tumor_tail,  "Tumour Tail Location",    "TumorTail",   "OR>1: more tail in EOPC")
 meta_vasc_inv    <- run_binary_meta(dat_vasc_inv,    "Vascular Invasion",       "VascInv",     "OR>1: more vasc inv in EOPC")
 
-# Run binary meta-analyses — Treatment
+# Run binary meta-analyses: Treatment
 meta_surgery     <- run_binary_meta(dat_surgery,     "Surgical Resection",      "Surgery",     "OR>1: more surgery in EOPC")
 meta_chemo       <- run_binary_meta(dat_chemo,       "Chemotherapy",            "Chemo",       "OR>1: more chemo in EOPC")
 meta_chemo_neo   <- run_binary_meta(dat_chemo_neo,   "Neoadjuvant Chemo",       "ChemoNeo",    "OR>1: more neoadj chemo in EOPC")
@@ -185,24 +185,24 @@ meta_whipple     <- run_binary_meta(dat_whipple,     "Whipple Procedure",       
 meta_distal      <- run_binary_meta(dat_distal,      "Distal Pancreatectomy",   "Distal",      "OR>1: more distal in EOPC")
 meta_r0          <- run_binary_meta(dat_r0,          "R0 Resection",            "R0",          "OR>1: more R0 in EOPC")
 
-# Run binary meta-analyses — Time-point overall survival
+# Run binary meta-analyses: Time-point overall survival
 meta_os_5yr <- run_binary_meta(dat_os_5yr, "5-Year Overall Survival", "OS5yr", "OR>1: higher 5yr OS in EOPC")
 meta_os_3yr <- run_binary_meta(dat_os_3yr, "3-Year Overall Survival", "OS3yr", "OR>1: higher 3yr OS in EOPC")
 meta_os_1yr <- run_binary_meta(dat_os_1yr, "1-Year Overall Survival", "OS1yr", "OR>1: higher 1yr OS in EOPC")
 meta_os_2yr <- run_binary_meta(dat_os_2yr, "2-Year Overall Survival", "OS2yr", "OR>1: higher 2yr OS in EOPC")
 
-# Run binary meta-analyses — Additional Demographics (data maximization)
+# Run binary meta-analyses: Additional Demographics (data maximization)
 meta_alcohol     <- run_binary_meta(dat_alcohol,     "Alcohol History",          "Alcohol",         "OR>1: more alcohol in EOPC")
 
-# Run binary meta-analyses — Race/Ethnicity
+# Run binary meta-analyses: Race/Ethnicity
 meta_white       <- run_binary_meta(dat_white,       "White Race",               "White",           "OR>1: more White in EOPC")
 meta_black       <- run_binary_meta(dat_black,       "Black Race",               "Black",           "OR>1: more Black in EOPC")
 meta_asian       <- run_binary_meta(dat_asian,       "Asian Race",               "Asian",           "OR>1: more Asian in EOPC")
 
-# Run binary meta-analyses — Additional Tumour
+# Run binary meta-analyses: Additional Tumour
 meta_pni         <- run_binary_meta(dat_pni,         "Perineural Invasion",      "PNI",             "OR>1: more PNI in EOPC")
 
-# Run binary meta-analyses — Additional Treatment
+# Run binary meta-analyses: Additional Treatment
 meta_no_tx       <- run_binary_meta(dat_no_tx,       "No Treatment",             "NoTx",            "OR>1: more untreated in EOPC")
 meta_palliative  <- run_binary_meta(dat_palliative,  "Palliative Chemotherapy",  "PalliativeChemo", "OR>1: more palliative in EOPC")
 meta_total_panc  <- run_binary_meta(dat_total_panc,  "Total Pancreatectomy",     "TotalPanc",       "OR>1: more total panc in EOPC")
@@ -232,7 +232,7 @@ save(meta_os, meta_dfs, meta_rfs,
      meta_no_tx, meta_palliative, meta_total_panc,
      file = file.path(PATHS$tables, "meta_results.RData"))
 
-# -- Summary helper --
+# == Summary helper ==
 .pk <- function(m) if (!is.null(m)) m$k else 0
 
 cat("\n\n========================================\n")
@@ -240,14 +240,14 @@ cat("All primary meta-analyses complete.\n")
 cat("HR outcomes: OS(", .pk(meta_os),
     "), DFS(", .pk(meta_dfs),
     "), RFS(", .pk(meta_rfs), ")\n")
-cat("OR — Demographics: Male(", .pk(meta_male),
+cat("OR - Demographics: Male(", .pk(meta_male),
     "), Smoking(", .pk(meta_smoking),
     "), Diabetes(", .pk(meta_diabetes),
     "), FamilyHx(", .pk(meta_family_hx),
     "), Alcohol(", .pk(meta_alcohol), ")\n")
-cat("OR — Race: White(", .pk(meta_white),
+cat("OR - Race: White(", .pk(meta_white),
     "), Black(", .pk(meta_black), ")\n")
-cat("OR — Tumour: StageI(", .pk(meta_stage_i),
+cat("OR - Tumour: StageI(", .pk(meta_stage_i),
     "), StageII(", .pk(meta_stage_ii),
     "), StageIII(", .pk(meta_stage_iii),
     "), StageIV(", .pk(meta_stage_iv),
@@ -261,7 +261,7 @@ cat("         LN+(", .pk(meta_ln_positive),
     "), Tail(", .pk(meta_tumor_tail),
     "), VascInv(", .pk(meta_vasc_inv),
     "), PNI(", .pk(meta_pni), ")\n")
-cat("OR — Treatment: Surgery(", .pk(meta_surgery),
+cat("OR - Treatment: Surgery(", .pk(meta_surgery),
     "), Chemo(", .pk(meta_chemo),
     "), ChemoNeo(", .pk(meta_chemo_neo),
     "), ChemoAdj(", .pk(meta_chemo_adj),
@@ -272,7 +272,7 @@ cat("OR — Treatment: Surgery(", .pk(meta_surgery),
 cat("         NoTx(", .pk(meta_no_tx),
     "), Palliative(", .pk(meta_palliative),
     "), TotalPanc(", .pk(meta_total_panc), ")\n")
-cat("OR — Time-point OS: 5yr(", .pk(meta_os_5yr),
+cat("OR - Time-point OS: 5yr(", .pk(meta_os_5yr),
     "), 3yr(", .pk(meta_os_3yr),
     "), 1yr(", .pk(meta_os_1yr), ")\n")
 cat("========================================\n")

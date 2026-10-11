@@ -1,6 +1,6 @@
 ################################################################################
 # EOPC vs AOPC Systematic Review and Meta-Analysis
-# Script: run_all.R — Master runner for full reproducibility
+# Script: run_all.R, master runner for full reproducibility
 # Purpose: Execute all 16 analysis scripts in correct dependency order
 # Usage:  Rscript --vanilla run_all.R
 ################################################################################

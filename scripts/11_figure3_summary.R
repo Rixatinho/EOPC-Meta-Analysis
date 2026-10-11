@@ -1,15 +1,15 @@
 #!/usr/bin/env Rscript
 # ==============================================================================
 # Figure 3: Summary forest plot of all binary outcomes (EOPC vs AOPC)
-# forestploter table-based layout — JNCI publication quality
+# forestploter table-based layout: JNCI publication quality
 #
 # Layout (2026-08-24): TWO stacked panels to eliminate text overlap
-#   Upper block: Panels A-C (Demographics, Staging, Pathology)  — 22 outcomes
-#   Lower block: Panels D-E (Treatment, Time-Point Survival)   — 15 outcomes
+#   Upper block: Panels A-C (Demographics, Staging, Pathology), 22 outcomes
+#   Lower block: Panels D-E (Treatment, Time-Point Survival), 15 outcomes
 # Both blocks share identical column widths (globally padded) and a common
 # x-axis range widened to c(0.08, 11) so wide CIs (e.g. 2-Year OS 0.11-8.23)
 # never intrude into the OR text column.
-# Data source: meta_results.RData (direct meta objects) — numbers unchanged
+# Data source: meta_results.RData (direct meta objects), numbers unchanged
 # ==============================================================================
 
 .get_script_dir <- function() {
@@ -184,7 +184,7 @@ w_p   <- max(nchar(sapply(disp, `[[`, "p")))
 pad_l <- function(x, w) formatC(x, width = w, flag = "-")   # left-justified
 
 # Outcome column: pad well BEYOND the longest (bold) panel header so the
-# regular-text padded width dominates the column width in BOTH blocks —
+# regular-text padded width dominates the column width in BOTH blocks,
 # a bold 30-char header measures ~33 regular chars, so +3 was insufficient
 # and the stacked columns misaligned by ~10 pt. +6 gives clear dominance.
 outcome_pad <- w_out + 6
@@ -250,10 +250,10 @@ tm <- forestploter::forest_theme(
   arrow_label_just = "end",
   title_just    = "left",
   title_gp      = gpar(cex = 1.2, fontface = "bold", col = "black"),
-  # NOTE: fontsize must be explicit — a bare gpar(cex=...) leaves the grid
+  # NOTE: fontsize must be explicit because a bare gpar(cex=...) leaves the grid
   # default 12 pt on the tick labels, which then collides with the xlab
   xaxis_gp      = gpar(fontsize = 8.4, cex = 1.0, lwd = 0.6),
-  # Style alignment (2026-08-24): match Fig 2/4/5 — WHITE column header,
+  # Style alignment (2026-08-24): match Fig 2/4/5 with a WHITE column header,
   # barely-there alternating rows (#F8F9FA like lancet_fp_theme), single
   # Wong-blue data color. No dark header band, no navy accents.
   core = list(
@@ -289,7 +289,7 @@ make_forest <- function(blk, with_xlab) {
     xlab       = if (with_xlab) "Odds Ratio" else NULL,
     theme      = tm
   )
-  # Style alignment: SINGLE Wong-blue data color (ci_col from theme) — no
+  # Style alignment: SINGLE Wong-blue data color (ci_col from theme), no
   # red/green direction coding, matching the other main figures (Fig 2/4/5).
   p
 }
@@ -300,7 +300,7 @@ p_lo <- make_forest(blk_lo, with_xlab = TRUE)
 # ---- Emphasize panel header rows (bold) --------------------------------------
 # forestploter's is_summary only styles the CI diamond; the row text stays
 # regular. Post-process the gtable: every "core-fg" text grob sitting on a
-# summary row gets fontface="bold" (BLACK, not navy — the other main figures
+# summary row gets fontface="bold" (BLACK, not navy, unlike the other main figures
 # use pure-black bold headers; bold alone makes the panel letters stand out
 # from the regular-weight data rows).
 emphasize_summary <- function(p, is_sum) {
@@ -374,7 +374,7 @@ fig_grob <- gridExtra::arrangeGrob(
 )
 
 # ==============================================================================
-# Save: TIFF 300 DPI + PDF — write to /tmp first, then copy into the project
+# Save: TIFF 300 DPI + PDF, written to /tmp first, then copied into the project
 # (avoids cairo/iCloud silent-write failures on large vector files)
 # ==============================================================================
 OUT_DPI    <- 300

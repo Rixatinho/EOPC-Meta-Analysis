@@ -200,7 +200,7 @@ p_dr <- ggplot() +
   # Best model CI band
   geom_ribbon(data = dr_curve_df, aes(x = x, ymin = lo, ymax = hi),
               fill = LANCET_STYLE$col_ci_band) +
-  # Linear comparison line (dashed gray) — always shown
+  # Linear comparison line (dashed gray): always shown
   geom_line(data = lin_curve_df, aes(x = x, y = y),
             colour = LANCET_STYLE$col_structural, linewidth = 0.7,
             linetype = "dashed") +
@@ -288,7 +288,7 @@ if (n_thresholds >= 4) {  # RCS with 3 knots needs >= 4 unique x values
     if (!is.null(rma_quad)) cat(sprintf("  Quadratic: %.2f\n", AIC(rma_quad)))
     cat(sprintf("  RCS:       %.2f\n", aic_rcs))
 
-    # RCS dose-response curve — ggplot2
+    # RCS dose-response curve: ggplot2
     rcs_curve_file <- file.path(PATHS$dose_response, "age_threshold_rcs_curve")
 
     rcs_seq <- seq(min(dr_data$Age_Threshold_Num),

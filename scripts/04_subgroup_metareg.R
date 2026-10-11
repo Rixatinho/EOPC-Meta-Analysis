@@ -62,7 +62,7 @@ run_subgroup <- function(meta_obj, dat, outcome_label, subgroup_var,
   cat(sprintf("Test for subgroup differences: Q=%.2f, df=%d, p=%s\n",
               m_sub$Q.b.random, m_sub$df.Q.b, format_pval(m_sub$pval.Q.b.random)))
 
-  # Forest plot — Lancet table-based layout (forestploter)
+  # Forest plot: Lancet table-based layout (forestploter)
   sub_file <- file.path(PATHS$subgroup,
                         paste0(prefix, "_by_", gsub(" ", "_", subgroup_label)))
 
@@ -171,7 +171,7 @@ run_metaregression <- function(meta_obj, dat, outcome_label, prefix) {
       stringsAsFactors = FALSE
     )
 
-    # Bubble plot (only for continuous moderators) — ggplot2
+    # Bubble plot (only for continuous moderators): ggplot2
     if (mod$type != "categorical") {
       bubble_file <- file.path(PATHS$subgroup,
                                paste0(prefix, "_metareg_", gsub(" ", "_", mod$label)))
@@ -365,7 +365,7 @@ mv_os <- run_multivariate_metareg(meta_os, dat_os, "Overall Survival", "OS")
 # PART 3: SUBGROUP ANALYSES + META-REGRESSION FOR BINARY OUTCOMES
 # ==============================================================================
 
-# 6 subgroups (drops HR_Source_Group — OS-specific; adds Publication_Era)
+# 6 subgroups (drops HR_Source_Group, which is OS-specific; adds Publication_Era)
 binary_subgroups <- list(
   list(var = "Age_Threshold_Group", label = "Age Threshold"),
   list(var = "Region_Group",        label = "Geographic Region"),

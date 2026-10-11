@@ -221,8 +221,8 @@ dat_rfs <- prepare_hr_data(master, "RFS_HR", "RFS_HR_LCI", "RFS_HR_UCI",
 # Some studies report one endpoint (DFS or RFS) that was recorded in both columns
 # with identical HRs. To avoid double-counting in separate meta-analyses,
 # we assign each to the endpoint terminology used in the original publication:
-#   Zironda_2024: paper reports "recurrence-free survival" → keep in RFS only
-#   Kim_2023:     paper reports "recurrence-free survival" → keep in RFS only
+#   Zironda_2024: paper reports "recurrence-free survival" -> keep in RFS only
+#   Kim_2023:     paper reports "recurrence-free survival" -> keep in RFS only
 # Confirmed via manual review of original publications.
 rfs_in_paper <- c("Zironda_2024", "Kim_2023")  # Studies whose DFS column is actually RFS
 
@@ -233,11 +233,11 @@ if (nrow(dat_dfs) > 0 && nrow(dat_rfs) > 0) {
     hr_rfs <- dat_rfs$hr_val[dat_rfs$Study_ID == sid]
     if (length(hr_dfs) == 1 && length(hr_rfs) == 1 && hr_dfs == hr_rfs) {
       if (sid %in% rfs_in_paper) {
-        # Paper reports RFS → keep in RFS, remove from DFS
+        # Paper reports RFS -> keep in RFS, remove from DFS
         dat_dfs <- dat_dfs %>% filter(Study_ID != sid)
         cat("  [Dedup]", sid, ": paper reports RFS, removed from DFS\n")
       } else {
-        # Paper reports DFS → keep in DFS, remove from RFS
+        # Paper reports DFS -> keep in DFS, remove from RFS
         dat_rfs <- dat_rfs %>% filter(Study_ID != sid)
         cat("  [Dedup]", sid, ": paper reports DFS, removed from RFS\n")
       }
@@ -319,7 +319,7 @@ dat_alcohol <- prepare_binary_data(master, "Alcohol_Pct_EOPC", "Alcohol_Pct_AOPC
 dat_white <- prepare_binary_data(master, "White_Pct_EOPC", "White_Pct_AOPC", "White Race %")
 dat_black <- prepare_binary_data(master, "Black_Pct_EOPC", "Black_Pct_AOPC", "Black Race %")
 dat_asian <- prepare_binary_data(master, "Asian_Pct_EOPC", "Asian_Pct_AOPC", "Asian Race %")
-# Exclude ethnically homogeneous cohorts (100%/100% Asian → zero informative contrast)
+# Exclude ethnically homogeneous cohorts (100%/100% Asian -> zero informative contrast)
 dat_asian <- dat_asian %>% filter(!Study_ID %in% c("Tang_2021", "Eguchi_2016", "Ohmoto_2016"))
 cat("  [Filtered Asian Race: excluded 3 homogeneous cohorts, k=", nrow(dat_asian), "]\n")
 

@@ -6,7 +6,9 @@ This repository contains the complete analytic code and data for the systematic 
 
 **Title**: The Early-Onset Pancreatic Cancer Paradox: A Systematic Review and Meta-Analysis
 
-**Manuscript**: JNCI-26-0532 (Journal of the National Cancer Institute) - accepted 2026-09-20
+**Manuscript**: JNCI-26-0532R1 (Journal of the National Cancer Institute), published online 2026-10-09
+
+**DOI**: 10.1093/jnci/djag373
 
 **PROSPERO**: CRD420261346604
 
@@ -97,7 +99,22 @@ comment refers to a previous supplementary number, map it as follows:
 
 ## Citation
 
-Accepted for publication in the Journal of the National Cancer Institute (JNCI: Journal of the National Cancer Institute), MS# JNCI-26-0532R1, 2026. A DOI and full citation will be added here once the article is published online.
+Ruze R, Zayier M, Aboduhelili A, Tuergan T, Abulizi A, Guo Q, Zhang R, Shalayiadang P, Ahan A, Jiang T, Shao Y, Aji T. The early-onset pancreatic cancer paradox: a systematic review and meta-analysis. *JNCI: Journal of the National Cancer Institute*. Published online October 9, 2026. doi:10.1093/jnci/djag373
+
+BibTeX:
+
+```bibtex
+@article{ruze2026eopc,
+  title   = {The early-onset pancreatic cancer paradox: a systematic review and meta-analysis},
+  author  = {Ruze, Rexiati and Zayier, Musitapa and Aboduhelili, Aboduhaiwaier and Tuergan, Talaiti
+             and Abulizi, Aboduaini and Guo, Qiang and Zhang, Ruiqing and Shalayiadang, Paizula
+             and Ahan, Ayifuhan and Jiang, Tiemin and Shao, Yingmei and Aji, Tuerganaili},
+  journal = {JNCI: Journal of the National Cancer Institute},
+  year    = {2026},
+  note    = {Published online October 9, 2026},
+  doi     = {10.1093/jnci/djag373}
+}
+```
 
 ## License
 

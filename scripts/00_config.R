@@ -183,38 +183,38 @@ SETTINGS <- list(
 
 # ---- 3b. Visual Style (Wong/Okabe-Ito colorblind-safe palette) ----
 LANCET_STYLE <- list(
-  # Forest plot — Wong blue data elements, near-black diamond
+  # Forest plot: Wong blue data elements, near-black diamond
   col_diamond       = LANCET_COLORS[["black"]],    # #1B1919 near-black
   col_diamond_fixed = LANCET_COLORS[["gray"]],     # #ADB6B6 gray
   col_predict       = LANCET_COLORS[["salmon"]],   # #FDAF91 prediction band
   col_square        = LANCET_COLORS[["blue"]],     # #0072B2 Wong blue
   col_ci_line       = LANCET_COLORS[["blue"]],     # #0072B2 Wong blue
 
-  # Funnel plot — Wong blue points
+  # Funnel plot: Wong blue points
   col_funnel_pt  = LANCET_COLORS[["blue"]],        # #00468B
   col_funnel_bg  = LANCET_COLORS[["gray"]],        # #ADB6B6
   col_contour    = scales::alpha(LANCET_COLORS[["blue"]], c(0.30, 0.18, 0.08)),
 
-  # PRISMA flowchart — subtle phase-coded fills
+  # PRISMA flowchart: subtle phase-coded fills
   col_box        = "white",
   col_box_border = "black",
   col_prisma_fill_id   = scales::alpha(LANCET_COLORS[["blue"]], 0.08),
   col_prisma_fill_excl = scales::alpha(LANCET_COLORS[["red"]], 0.08),
   col_prisma_fill_incl = scales::alpha(LANCET_COLORS[["blue"]], 0.12),
 
-  # NOS stacked bar — Wong colorblind-safe palette domains
+  # NOS stacked bar: Wong colorblind-safe palette domains
   col_nos = c(Selection     = "#0072B2",
               Comparability = "#009E73",
               Outcome       = "#CC79A7"),
 
-  # Forest plot — colour-coded by effect direction (Wong palette)
+  # Forest plot: colour-coded by effect direction (Wong palette)
   col_favors_eopc   = LANCET_COLORS[["blue"]],     # #0072B2 favours EOPC
   col_favors_aopc   = LANCET_COLORS[["red"]],      # #D55E00 favours AOPC
   col_diamond_re    = LANCET_COLORS[["black"]],    # #1B1919 pooled diamond
   col_null_line     = LANCET_COLORS[["gray"]],     # #ADB6B6 null-effect line
   lwd_null          = 1.0,
 
-  # KM curves — unified: EOPC=blue (primary), AOPC=vermillion (comparator)
+  # KM curves: unified, EOPC=blue (primary), AOPC=vermillion (comparator)
   col_km_eopc = LANCET_COLORS[["blue"]],           # #0072B2
   col_km_aopc = LANCET_COLORS[["red"]],            # #D55E00
 
@@ -961,7 +961,7 @@ lancet_gg_contour_funnel <- function(m, outcome_label = "") {
     z <- qnorm(1 - level / 2)
     lo <- exp(re_te - z * se_seq)
     hi <- exp(re_te + z * se_seq)
-    # Build polygon: top-left (lo at se_max) → apex → top-right (hi at se_max) → back
+    # Build polygon: top-left (lo at se_max) -> apex -> top-right (hi at se_max) -> back
     poly_df <- data.frame(
       x = c(lo, rev(hi)),
       y = c(se_seq, rev(se_seq)),

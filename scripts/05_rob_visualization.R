@@ -60,7 +60,7 @@ create_nos_plot <- function() {
                       levels = c("Selection", "Comparability", "Outcome"))
     )
 
-  # Stacked bar chart — sorted by total score, with quality summary annotation
+  # Stacked bar chart: sorted by total score, with quality summary annotation
   # Use AHRQ domain-based Quality_Grade (consistent with manuscript text)
   n_good <- sum(nos_summary$Quality_Grade == "Good", na.rm = TRUE)
   n_fair <- sum(nos_summary$Quality_Grade == "Fair", na.rm = TRUE)

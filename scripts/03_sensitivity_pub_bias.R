@@ -80,7 +80,7 @@ run_os_sensitivity <- function() {
     results[["S3"]] <- extract_stats(s3, "S3: Multivariable-adjusted HR only")
   }
 
-  # S4: SEER/NCDB overlap — keep only one study per cluster (largest N)
+  # S4: SEER/NCDB overlap, keep only one study per cluster (largest N)
   if ("Database_Cluster" %in% names(dat_os)) {
     seer_ncdb <- dat_os %>% filter(Database_Cluster %in% c("SEER", "NCDB"))
     if (nrow(seer_ncdb) >= 2) {
@@ -174,7 +174,7 @@ run_pub_bias <- function(meta_obj, dat, outcome_label, prefix) {
     if (!is.null(begg)) begg_p <- begg$p.value
   }
 
-  # Standard funnel plot — ggplot2 with non-overlapping labels
+  # Standard funnel plot: ggplot2 with non-overlapping labels
   funnel_file <- file.path(PATHS$funnel, paste0(prefix, "_funnel"))
 
   p_funnel <- lancet_gg_funnel(meta_obj, outcome_label = outcome_label,
@@ -325,11 +325,11 @@ for (item in binary_metas) {
 }
 
 # ==============================================================================
-# PART 3: SEER/NCDB OVERLAP SENSITIVITY — BINARY OUTCOMES
+# PART 3: SEER/NCDB OVERLAP SENSITIVITY (BINARY OUTCOMES)
 # ==============================================================================
 
 run_seer_ncdb_sensitivity_binary <- function(binary_metas_list) {
-  cat("\n\n==== SEER/NCDB Overlap Sensitivity — Binary Outcomes ====\n")
+  cat("\n\n==== SEER/NCDB Overlap Sensitivity - Binary Outcomes ====\n")
 
   results <- list()
 
@@ -373,7 +373,7 @@ run_seer_ncdb_sensitivity_binary <- function(binary_metas_list) {
         Dropped = length(drop_ids),
         stringsAsFactors = FALSE
       )
-      cat(sprintf("  %s: k=%d→%d, OR %.2f→%.2f (dropped %d)\n",
+      cat(sprintf("  %s: k=%d->%d, OR %.2f->%.2f (dropped %d)\n",
                   item$label, m$k, s_meta$k,
                   exp(m$TE.random), exp(s_meta$TE.random), length(drop_ids)))
     }

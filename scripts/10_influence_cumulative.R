@@ -86,7 +86,7 @@ run_influence_diagnostics <- function(meta_obj, dat, outcome_label, prefix) {
                                 force = 1.5, seed = 42) +
       labs(x = "Contribution to Q statistic",
            y = "Influence on pooled result",
-           title = paste0(outcome_label, " -- Baujat Plot")) +
+           title = paste0(outcome_label, ": Baujat Plot")) +
       lancet_theme(base_size = 10)
     save_figure_gg(p_baujat, baujat_file, width = 8, height = 7)
   }, error = function(e) {
@@ -96,7 +96,7 @@ run_influence_diagnostics <- function(meta_obj, dat, outcome_label, prefix) {
       quote({
         lancet_par(mar = c(5, 5, 3, 2))
         baujat(rma_obj,
-               main = paste0(outcome_label, " -- Baujat Plot"),
+               main = paste0(outcome_label, ": Baujat Plot"),
                xlab = "Contribution to Q statistic",
                ylab = "Influence on pooled result")
       }),
@@ -126,7 +126,7 @@ run_influence_diagnostics <- function(meta_obj, dat, outcome_label, prefix) {
       gosh_res <- gosh(rma_obj, subsets = min(2^meta_obj$k, 10000))
       save_figure(
         quote({ lancet_par(mar = c(4, 5, 2, 1.5));
-                plot(gosh_res, main = paste0(outcome_label, " -- GOSH Plot")) }),
+                plot(gosh_res, main = paste0(outcome_label, ": GOSH Plot")) }),
         filename = gosh_file,
         width = 10, height = 8
       )
@@ -162,7 +162,7 @@ run_leave_one_out <- function(meta_obj, outcome_label, prefix) {
     quote({
       par(family = LANCET_FONT, bg = "white")
       forest(loo,
-             main = paste0(outcome_label, " -- Leave-One-Out Sensitivity"),
+             main = paste0(outcome_label, ": Leave-One-Out Sensitivity"),
              col.diamond = fstyle$col.diamond,
              col.diamond.lines = fstyle$col.diamond,
              col.bg = LANCET_STYLE$col_square,
@@ -195,7 +195,7 @@ run_cumulative_meta <- function(meta_obj, dat, outcome_label, prefix) {
 
   cat("\n==== Cumulative Meta-Analysis:", outcome_label, "====\n")
 
-  # metacum handles sorting internally via sortvar — no need for pre-sorting
+  # metacum handles sorting internally via sortvar, so no pre-sorting is needed
   cum <- metacum(meta_obj, pooled = "random", sortvar = dat$Year)
 
   cum_file <- file.path(PATHS$influence, paste0(prefix, "_cumulative"))
@@ -206,7 +206,7 @@ run_cumulative_meta <- function(meta_obj, dat, outcome_label, prefix) {
     quote({
       par(family = LANCET_FONT, bg = "white")
       forest(cum,
-             main = paste0(outcome_label, " -- Cumulative Meta-Analysis (by Year)"),
+             main = paste0(outcome_label, ": Cumulative Meta-Analysis (by Year)"),
              col.diamond = fstyle$col.diamond,
              col.diamond.lines = fstyle$col.diamond,
              col.bg = LANCET_STYLE$col_square,
